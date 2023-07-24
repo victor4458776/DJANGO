@@ -1,0 +1,30 @@
+
+# The idea is to hack python apps across cryptographic libraries to learn about django security
+# For this reason I prefer work with the shell on the fly because is quickest than create big projects
+
+>>> from django.http import HttpResponse
+>>> def index(request):
+...     return HttpResponse("Poll-index mappings")
+... 
+>>> print(request)
+
+#INDEX function
+>> print(index)
+<function index at 0x78282b0e7280>
+>>> from django.urls import path
+>>> from . import views
+# URL PATTERNS are important for security functions and hash algorithms
+>>> from django import views
+>>> urlpatterns = [
+...     path("", views.index, name="index"),
+... ]
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path("polls/", include("polls.urls")),
+    path("admin/", admin.site.urls),
+]
+
+#The include() function allows referencing other URLconfs. Whenever Django encounters include(), it chops off whatever part of the 
+#URL matched up to that point and sends the remaining string to the included URLconf for further processing.

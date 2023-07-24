@@ -1,0 +1,47 @@
+# HERE IS THE DB models in django with the ForeignKey and de on_delete methods.
+#!/usr/bin/python3
+
+>>> from django.db import models
+>>> class Question(models.Model):
+...      question_text = models.CharField(max_length=200)
+...      pub_date = models.DateTimeField("date published")
+... 
+
+>>> class Choice(models.Model):
+...     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+...     choice_text = models.CharField(max_length=200)
+...     votes = models.IntegerField(default=0)
+
+>>> class Model(models.Model):
+...     upload = models.FileField(upload_to="uploads/")
+...     upload = models.FileField(upload_to="uploads/%Y/%m/%d/")
+
+>>> def user_directory_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    return "user_{0}/{1}".format(instance.user.id, filename)
+
+#class GenericIPAddressField(protocol='both', unpack_ipv4=False, **options)¶
+An IPv4 or IPv6 address, in string format (e.g. 192.0.2.30 or 2a02:42fe::4). 
+#The default form widget for this field is a TextInput.
+
+GenericIPAddressField.protocol¶
+Limits valid inputs to the specified protocol. Accepted values are 'both' (default), 'IPv4' or 'IPv6'. Matching is case insensitive.
+
+GenericIPAddressField.unpack_ipv4¶
+Unpacks IPv4 mapped addresses like ::ffff:192.0.2.1. If this option is enabled that address would be unpacked to 192.0.2.1. Default is disabled. Can only be used when protocol is set to 'both'.
+
+
+>>> class MyModel(models.Model):
+    upload = models.FileField(upload_to=user_directory_path)
+
+#Files configuration
+from django.core.files import File
+
+# Open an existing file using Python's built-in open()
+f = open("/path/to/hello.world")
+myfile = File(f)
+
+#EXAMPLE
+from django.core.files.base import ContentFile
+myfile = ContentFile("hello world")
+

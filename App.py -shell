@@ -1,4 +1,4 @@
-
+#!/usr/bin/python3
 # The idea is to hack python apps across cryptographic libraries to learn about django security
 # For this reason I prefer work with the shell on the fly because is quickest than create big projects
 

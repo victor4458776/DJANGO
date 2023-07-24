@@ -3,3 +3,11 @@
 >>> from django_cryptography.fields import encrypt
 # django.core.exceptions.ImproperlyConfigured: Requested setting CRYPTOGRAPHY_BACKEND, but settings are missconfigured. 
 # You must either define the environment variable DJANGO_SETTINGS_MODULE, call settings.configure() before accessi ng settings.
+
+>>> class Model(models.Model):
+...     name = models.CharField(max_length=50)
+...     sensitive = encrypt(models.CharField(max_length=50))
+... 
+
+
+

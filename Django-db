@@ -1,5 +1,6 @@
-# HERE IS THE DB models in django with the ForeignKey and de on_delete methods.
 #!/usr/bin/python3
+# HERE IS THE DB models in django with the ForeignKey and de on_delete methods.
+
 
 >>> from django.db import models
 >>> class Question(models.Model):
